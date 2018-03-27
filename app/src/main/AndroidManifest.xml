@@ -28,7 +28,8 @@
         <activity android:name=".ScannerActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".CreateCustomer" />
-        <activity android:name=".TransactionActivity"></activity>
+        <activity android:name=".TransactionActivity" />
+        <activity android:name=".DebugIonut"></activity>
     </application>
 
 </manifest>

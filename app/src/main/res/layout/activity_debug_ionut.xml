@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="net.ddns.rapidfill.rapidfill.DebugIonut">
+
+    <EditText
+        android:id="@+id/debugLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="http://linkSprePhp-ulTau"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/debugAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Aici bagi de unde ia suma"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/debugNounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Aici bagi nounce-ul"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/debugSendRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Send Request" />
+
+    <TextView
+        android:id="@+id/debugRaspuns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Raspuns:"
+        android:textSize="30dp" />
+</LinearLayout>
