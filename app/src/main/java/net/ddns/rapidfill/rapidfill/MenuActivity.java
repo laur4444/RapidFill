@@ -2,6 +2,7 @@ package net.ddns.rapidfill.rapidfill;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +35,7 @@ import java.util.Map;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseAuth firebaseAuth;
+    public FirebaseAuth firebaseAuth;
 
     final int REQUEST_CODE = 1;
     final String get_token = "http://dunno.ddns.net/BraintreePayments/main.php";
@@ -49,6 +50,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     Button addCard;
     Button btnPay;
     Button btnDelete;
+    Button btnTransactions;
     EditText etAmount;
     LinearLayout llHolder;
 
@@ -65,6 +67,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnPay = (Button) findViewById(R.id.btnPay);
         addCard = (Button) findViewById(R.id.AddCard);
         btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnTransactions = findViewById(R.id.viewTransactionsButton);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +84,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 onBraintreeSubmit();
+            }
+        });
+        btnTransactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                change(TransactionActivity.class);
             }
         });
         //new HttpRequest().execute(this);
@@ -208,6 +217,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                         if(response.contains("Successful"))
                         {
                             Toast.makeText(MenuActivity.this, "Card added!", Toast.LENGTH_LONG).show();
+                            //TODO
+                            //DELETE LISTENERS
                         }
                         else Toast.makeText(MenuActivity.this, "Failed to add card!", Toast.LENGTH_LONG).show();
                         Log.d("mylog", "Final Response: " + response.toString());

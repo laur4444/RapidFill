@@ -53,6 +53,7 @@ public class CreateCustomer extends AppCompatActivity implements View.OnClickLis
                 paramHash.put("firstName", txtNume.getText().toString());
                 paramHash.put("lastName", txtPrenume.getText().toString());
                 paramHash.put("id", firebaseAuth.getUid());
+                paramHash.put("email", firebaseAuth.getCurrentUser().getEmail());
                 createCustomer();
             }
         });
