@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tvMessage"
@@ -46,6 +46,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimaryDark"
+            android:text="Pay Debug"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/scanButton"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimaryDark"
             android:text="Pay"
             android:textColor="@android:color/white" />
 
@@ -57,6 +66,7 @@
             android:background="@color/colorPrimaryDark"
             android:text="Transactions"
             android:textColor="@android:color/white" />
+
         <Button
             android:id="@+id/AddCard"
             android:layout_width="300dp"

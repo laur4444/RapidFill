@@ -51,6 +51,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     Button btnPay;
     Button btnDelete;
     Button btnTransactions;
+    Button btnScanner;
     EditText etAmount;
     LinearLayout llHolder;
 
@@ -67,7 +68,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnPay = (Button) findViewById(R.id.btnPay);
         addCard = (Button) findViewById(R.id.AddCard);
         btnDelete = (Button) findViewById(R.id.btnDelete);
+
+
         btnTransactions = findViewById(R.id.viewTransactionsButton);
+        btnScanner = findViewById(R.id.scanButton);
+
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +95,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 change(TransactionActivity.class);
+            }
+        });
+        btnScanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                change(ScannerActivity.class);
             }
         });
         //new HttpRequest().execute(this);
