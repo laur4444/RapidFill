@@ -6,6 +6,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +55,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private HashMap<String, String> paramHash;
 
+    //UI
+    ProgressDialog loadingDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,12 +73,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        //UI
+        loadingDialog = new ProgressDialog(this);
+        loadingDialog.setMessage("Logging in...");
+        loadingDialog.setCancelable(false);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
+                loadingDialog.show();
                 signIn();
                 break;
         }
@@ -99,7 +109,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
+                loadingDialog.dismiss();
+                Toast.makeText(LoginActivity.this, "Esuez", Toast.LENGTH_SHORT).show();
             }
+
         }
     }
 
@@ -119,6 +132,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                         }
+
                     }
                 });
     }
@@ -137,12 +151,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             change(MenuActivity.class);
                         }
                         Log.d("mylog", "Final Response: " + response.toString());
+                        loadingDialog.dismiss();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("mylog", "Volley error : " + error.toString());
                 change (CreateCustomer.class);
+                loadingDialog.dismiss();
             }
         }) {
             @Override

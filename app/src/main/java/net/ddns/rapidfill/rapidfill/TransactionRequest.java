@@ -1,5 +1,6 @@
 package net.ddns.rapidfill.rapidfill;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,13 +32,15 @@ public class TransactionRequest {
     TransactionAdaptor adaptor;
     HashMap<String, String> paramHash;
     Context mContext;
+    ProgressDialog loadingDialog;
     final String get_user_transactions = "http://dunno.ddns.net/BraintreePayments/getUserTransactions.php";
 
     //add transaction adaptor to parameters
-    TransactionRequest(FirebaseAuth db, Context context, TransactionAdaptor adaptor) {
+    TransactionRequest(FirebaseAuth db, Context context, TransactionAdaptor adaptor, ProgressDialog loadingDialog) {
         this.db = db;
         this.mContext = context;
         this.adaptor = adaptor;
+        this.loadingDialog = loadingDialog;
     }
     ArrayList<Transaction> getUserTransactions() {
         paramHash = new HashMap<>();
@@ -56,8 +59,8 @@ public class TransactionRequest {
                             //aux.setDate(tokens.nextToken());
                             transactions.add(aux);
                         }
+                        loadingDialog.dismiss();
                         adaptor.notifyDataSetChanged();
-                        Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override

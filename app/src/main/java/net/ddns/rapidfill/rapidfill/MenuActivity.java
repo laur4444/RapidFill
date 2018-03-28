@@ -55,6 +55,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     EditText etAmount;
     LinearLayout llHolder;
 
+    //UI
+    ProgressDialog loadingDialog;
+
     // @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +108,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         });
         //new HttpRequest().execute(this);
         sendTokenRequest();
+
+        //UI
+        loadingDialog = new ProgressDialog(this);
+        loadingDialog.setMessage("Logging in...");
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
     }
 
 
@@ -123,6 +132,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                     paramHash = new HashMap<>();
                     paramHash.put("amount", amount);
                     paramHash.put("nonce", stringNonce);
+                    Toast.makeText(MenuActivity.this, stringNonce, Toast.LENGTH_SHORT).show();
                     paramHash.put("id", firebaseAuth.getUid());
                     sendPaymentDetails();
                 } else
@@ -145,6 +155,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 String stringNonce = nonce.getNonce();
                 paramHash = new HashMap<>();
                 paramHash.put("nonce", stringNonce);
+                Toast.makeText(MenuActivity.this, stringNonce, Toast.LENGTH_SHORT).show();
                 paramHash.put("id", firebaseAuth.getUid());
                 sendCardDetails();
             } else if (resultCode == Activity.RESULT_CANCELED) {
@@ -319,6 +330,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        loadingDialog.dismiss();
                         Toast.makeText(MenuActivity.this, "Token successful", Toast.LENGTH_LONG).show();
                         llHolder.setVisibility(View.VISIBLE);
                         token = response;
