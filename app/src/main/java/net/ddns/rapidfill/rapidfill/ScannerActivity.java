@@ -1,6 +1,7 @@
 package net.ddns.rapidfill.rapidfill;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.graphics.Camera;
 import android.graphics.Canvas;
@@ -50,9 +51,14 @@ public class ScannerActivity extends AppCompatActivity {
     final int RequestCameraPermissionID = 1001;
     boolean debug_ok = true;
 
-    //Links
+    //Links & requests
     final String requestSumLink = "http://dunno.ddns.net/Debug/requestSum.php";
     final String requestPaymentLink = "http://dunno.ddns.net/Debug/requestServerConfirmation.php";
+
+    //UI
+    ProgressDialog loadingDialog;
+    AlertDialog payDialog;
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -82,6 +88,8 @@ public class ScannerActivity extends AppCompatActivity {
         cameraPreview = findViewById(R.id.cameraSurfaceView);
         textResult = findViewById(R.id.debugTextResult);
 
+        loadingDialog = new ProgressDialog(this);
+
 
         textResult.setText(width + " " + height);
 
@@ -103,6 +111,7 @@ public class ScannerActivity extends AppCompatActivity {
                             code = qrcodes.valueAt(0).displayValue;
                             textResult.setText(code);
                             if(debug_ok) {
+                                showDialog();
                                 requestPaymentSum(code);
                                 debug_ok = false;
                             }
@@ -206,12 +215,12 @@ public class ScannerActivity extends AppCompatActivity {
     }
 
     void confirmPayment(final double amount) {
-        AlertDialog.Builder payDialog;
+        AlertDialog.Builder payDialogAux;
         View payView;
         TextView amountTextView;
         Button confirmPaymentButton;
 
-        payDialog = new AlertDialog.Builder(ScannerActivity.this);
+        payDialogAux = new AlertDialog.Builder(ScannerActivity.this);
         payView = getLayoutInflater().inflate(R.layout.pay_layout, null);
         amountTextView = (TextView) payView.findViewById(R.id.amountTextView);
         confirmPaymentButton = (Button) payView.findViewById(R.id.btnConfirmPay);
@@ -222,13 +231,16 @@ public class ScannerActivity extends AppCompatActivity {
                 clientConfirmation(amount);
             }
         });
-        payDialog.setView(payView);
-        AlertDialog dialog = payDialog.create();
-        dialog.show();
+        payDialogAux.setView(payView);
+        payDialog = payDialogAux.create();
+        payDialog.setCancelable(false);
+        payDialog.show();
+        loadingDialog.dismiss();
     }
 
     void clientConfirmation(double amount) {
         String nonce = "debugTestingPurposes";
+
 
         //call api
         //select payment method for amount
@@ -236,6 +248,8 @@ public class ScannerActivity extends AppCompatActivity {
         //call when ok serverConfirmation(nonce)
         //else
         //call displayServerResponse(false)
+        payDialog.dismiss();
+        loadingDialog.show();
         serverConfirmation(nonce);
     }
 
@@ -286,14 +300,22 @@ public class ScannerActivity extends AppCompatActivity {
         };
         queue.add(stringRequest);
     }
-
+    void dismissDialog() {
+        loadingDialog.dismiss();
+    }
+    void showDialog() {
+        loadingDialog.setMessage("Processing...");
+        loadingDialog.show();
+        loadingDialog.setCancelable(false);
+    }
     void displayServerResponse(boolean ok) {
+        dismissDialog();
         debug_ok = true;
         textResult.setText(ok + "");
         if(ok) {
-            Toast.makeText(ScannerActivity.this, "Plata efectuata!", Toast.LENGTH_SHORT);
+            Toast.makeText(ScannerActivity.this, "Plata efectuata!", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(ScannerActivity.this, "Plata nu a fost efectuata!", Toast.LENGTH_SHORT);
+            Toast.makeText(ScannerActivity.this, "Plata nu a fost efectuata!", Toast.LENGTH_SHORT).show();
         }
     }
 }
