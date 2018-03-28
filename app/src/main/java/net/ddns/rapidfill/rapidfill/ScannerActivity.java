@@ -1,7 +1,9 @@
 package net.ddns.rapidfill.rapidfill;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Camera;
 import android.graphics.Canvas;
@@ -29,6 +31,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.braintreepayments.api.dropin.DropInActivity;
+import com.braintreepayments.api.dropin.DropInRequest;
+import com.braintreepayments.api.dropin.DropInResult;
+import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -39,7 +45,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-public class ScannerActivity extends AppCompatActivity {
+public class ScannerActivity extends AppCompatActivity implements View.OnClickListener {
 
     //QR scanner
     SurfaceView cameraPreview;
@@ -228,7 +234,7 @@ public class ScannerActivity extends AppCompatActivity {
         confirmPaymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clientConfirmation(amount);
+                clientConfirmation();
             }
         });
         payDialogAux.setView(payView);
@@ -238,19 +244,18 @@ public class ScannerActivity extends AppCompatActivity {
         loadingDialog.dismiss();
     }
 
-    void clientConfirmation(double amount) {
-        String nonce = "debugTestingPurposes";
+    void clientConfirmation() {
 
 
         //call api
         //select payment method for amount
+        DropInRequest dropInRequest = new DropInRequest()
+                .clientToken(MenuActivity.token);
+        startActivityForResult(dropInRequest.getIntent(this), 1);
 
         //call when ok serverConfirmation(nonce)
         //else
         //call displayServerResponse(false)
-        payDialog.dismiss();
-        loadingDialog.show();
-        serverConfirmation(nonce);
     }
 
     void serverConfirmation(String nonce) {
@@ -317,5 +322,30 @@ public class ScannerActivity extends AppCompatActivity {
         } else {
             Toast.makeText(ScannerActivity.this, "Plata nu a fost efectuata!", Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode == 1){
+            if (resultCode == Activity.RESULT_OK) {
+                DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
+                // use the result to update your UI and send the payment method nonce to your server
+                PaymentMethodNonce nonce = result.getPaymentMethodNonce();
+                String stringNonce = nonce.getNonce();
+                payDialog.dismiss();
+                loadingDialog.show();
+                serverConfirmation(stringNonce);
+                Toast.makeText(ScannerActivity.this, stringNonce, Toast.LENGTH_SHORT).show();
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                // the user canceled
+            } else {
+                // handle errors here, an exception may be available in
+                Exception error = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

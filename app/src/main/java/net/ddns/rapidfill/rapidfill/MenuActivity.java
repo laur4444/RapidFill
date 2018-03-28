@@ -43,7 +43,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     final String add_payment_method = "http://dunno.ddns.net/BraintreePayments/createPayment.php";
     final String delete_customer = "Http://dunno.ddns.net/BraintreePayments/deleteCustomer.php";
 
-    String token, amount;
+    static String token, amount;
     HashMap<String, String> paramHash;
     HashMap<String, String> idHash;
 
