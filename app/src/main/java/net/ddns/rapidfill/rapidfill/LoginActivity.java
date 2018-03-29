@@ -6,6 +6,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -77,7 +78,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loadingDialog = new ProgressDialog(this);
         loadingDialog.setMessage("Logging in...");
         loadingDialog.setCancelable(false);
-
     }
 
     @Override

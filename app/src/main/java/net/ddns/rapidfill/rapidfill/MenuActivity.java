@@ -133,7 +133,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                     paramHash.put("amount", amount);
                     paramHash.put("nonce", stringNonce);
                     Toast.makeText(MenuActivity.this, stringNonce, Toast.LENGTH_SHORT).show();
-                    paramHash.put("id", firebaseAuth.getUid());
+                    //paramHash.put("id", firebaseAuth.getUid());
                     sendPaymentDetails();
                 } else
                     Toast.makeText(MenuActivity.this, "Please enter a valid amount.", Toast.LENGTH_SHORT).show();

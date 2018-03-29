@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -58,8 +59,8 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
     boolean debug_ok = true;
 
     //Links & requests
-    final String requestSumLink = "http://dunno.ddns.net/Debug/requestSum.php";
-    final String requestPaymentLink = "http://dunno.ddns.net/Debug/requestServerConfirmation.php";
+    final String requestSumLink = "http://dunno.ddns.net/RapidFill/getSum.php";
+    final String requestPaymentLink = "http://dunno.ddns.net/RapidFill/getNonce.php";
 
     //UI
     ProgressDialog loadingDialog;
@@ -118,7 +119,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
                             textResult.setText(code);
                             if(debug_ok) {
                                 showDialog();
-                                requestPaymentSum(code);
+                                requestPaymentSum();
                                 debug_ok = false;
                             }
                         }
@@ -171,7 +172,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
 
 
     }
-    void requestPaymentSum(String code) {
+    void requestPaymentSum() {
         //parsare code ??
         final HashMap<String, String> paramHash;
         paramHash = new HashMap<>();
@@ -263,18 +264,20 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
         final HashMap<String, String> paramHash;
         paramHash = new HashMap<>();
         paramHash.put("nonce", nonce);
+        paramHash.put("whereGetSum", code);
         RequestQueue queue = Volley.newRequestQueue(this);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, requestPaymentLink,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.equals("ok")) {
+                        if(response.equals("true")) {
                             displayServerResponse(true);
                         } else {
                             displayServerResponse(false);
                         }
-                        Toast.makeText(ScannerActivity.this, "A raspuns serverul cu plata!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ScannerActivity.this, "A raspuns serverul cu plata! " + response, Toast.LENGTH_SHORT).show();
+                        Log.d("mylog", "getNonce response: " + response.toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -303,6 +306,10 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
                 return params;
             }
         };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(stringRequest);
     }
     void dismissDialog() {
