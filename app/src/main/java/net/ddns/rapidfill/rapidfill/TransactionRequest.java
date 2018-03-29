@@ -52,12 +52,23 @@ public class TransactionRequest {
                     @Override
                     public void onResponse(String response) {
                         //tokenize response;
-                        StringTokenizer tokens = new StringTokenizer(response, ":");
+                        StringTokenizer tokens = new StringTokenizer(response, "~");
                         while(tokens.hasMoreElements()) {
                             Transaction aux = new Transaction();
                             aux.setPrice(tokens.nextToken());
+                            if(tokens.hasMoreElements()) {
+                                String status = tokens.nextToken();
+                                String s1 = status.substring(0, 1).toUpperCase();
+                                status = s1 + status.substring(1);
+                                aux.setStatus(status);
+                            }
+                            if(tokens.hasMoreElements()) {
+                                aux.setDate(tokens.nextToken());
+                            }
                             //aux.setDate(tokens.nextToken());
-                            transactions.add(aux);
+                            if(tokens.hasMoreElements()) {
+                                transactions.add(aux);
+                            }
                         }
                         loadingDialog.dismiss();
                         adaptor.notifyDataSetChanged();

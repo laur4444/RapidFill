@@ -31,6 +31,9 @@ public class Transaction {
     public void setDate(String date) {
         this.date = date;
     }
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public String getStatus(){
         return status;
     }
