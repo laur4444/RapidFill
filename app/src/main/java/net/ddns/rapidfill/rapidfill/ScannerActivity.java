@@ -98,7 +98,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
         loadingDialog = new ProgressDialog(this);
 
 
-        textResult.setText(width + " " + height);
+       // textResult.setText(width + " " + height);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.QR_CODE).build();
@@ -116,7 +116,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void run() {
                             code = qrcodes.valueAt(0).displayValue;
-                            textResult.setText(code);
+                           // textResult.setText(code);
                             if(debug_ok) {
                                 showDialog();
                                 requestPaymentSum();
@@ -189,7 +189,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
                         } else {
                             displayServerResponse(false);
                         }
-                        Toast.makeText(ScannerActivity.this, "A raspuns suma!", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(ScannerActivity.this, "A raspuns suma!", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -276,7 +276,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
                         } else {
                             displayServerResponse(false);
                         }
-                        Toast.makeText(ScannerActivity.this, "A raspuns serverul cu plata! " + response, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(ScannerActivity.this, "A raspuns serverul cu plata! " + response, Toast.LENGTH_SHORT).show();
                         Log.d("mylog", "getNonce response: " + response.toString());
                     }
                 }, new Response.ErrorListener() {
@@ -323,7 +323,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
     void displayServerResponse(boolean ok) {
         dismissDialog();
         debug_ok = true;
-        textResult.setText(ok + "");
+       // textResult.setText(ok + "");
         if(ok) {
             Toast.makeText(ScannerActivity.this, "Plata efectuata!", Toast.LENGTH_SHORT).show();
         } else {

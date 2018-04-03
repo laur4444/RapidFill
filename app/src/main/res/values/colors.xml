@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#000000</color>
+    <color name="colorPrimary">#87b4fe</color>
+    <color name="colorPrimaryDark">#87b4fe</color>
+    <color name="colorAccent">#87b4fe</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhite">#87b4fe</color>
     <color name="colorCornFlowerBlue">#6495ED</color>
     <color name="colorGalben">#e6e36a</color>
     <color name="colorButon">#efeda6</color>
     <color name="colorBgCred">#b7caec</color>
     <color name="colorVerde">#32bc32</color>
     <color name="colorText">#000000</color>
-    <color name="bgColor">#000000</color>
+    <color name="bgColor">#07263b</color>
 </resources>

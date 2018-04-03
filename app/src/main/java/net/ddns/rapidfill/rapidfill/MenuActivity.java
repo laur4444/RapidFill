@@ -48,7 +48,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     HashMap<String, String> idHash;
 
     Button addCard;
-    Button btnPay;
+   // Button btnPay;
     Button btnDelete;
     Button btnTransactions;
     Button btnScanner;
@@ -67,8 +67,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         firebaseAuth = FirebaseAuth.getInstance();
 
         llHolder = (LinearLayout) findViewById(R.id.llHolder);
-        etAmount = (EditText) findViewById(R.id.etPrice);
-        btnPay = (Button) findViewById(R.id.btnPay);
+        //etAmount = (EditText) findViewById(R.id.etPrice);
+       // btnPay = (Button) findViewById(R.id.btnPay);
         addCard = (Button) findViewById(R.id.AddCard);
         btnDelete = (Button) findViewById(R.id.btnDelete);
 
@@ -88,12 +88,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 addPaymentMethod();
             }
         });
-        btnPay.setOnClickListener(new View.OnClickListener() {
+       /* btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBraintreeSubmit();
             }
-        });
+        });*/
         btnTransactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

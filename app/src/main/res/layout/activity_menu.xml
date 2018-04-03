@@ -14,53 +14,11 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:id="@+id/ll2Holder"
-            android:layout_width="250dp"
-            android:layout_height="130dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_button">
-            <TextView
-                android:id="@+id/tvMessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Ready for transaction"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp">
-
-                <EditText
-                    android:id="@+id/etPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="Choose the amount to pay"
-                    android:imeOptions="actionDone"
-                    android:inputType="text" />
-
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnPay"
-            android:layout_width="148dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_button"
-            android:text="Pay Debug"
-            android:textColor="@color/colorText" />
+        android:visibility="visible">
 
         <Button
             android:id="@+id/scanButton"
-            android:layout_width="148dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_button"
@@ -69,7 +27,7 @@
 
         <Button
             android:id="@+id/viewTransactionsButton"
-            android:layout_width="148dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_button"
@@ -80,16 +38,16 @@
             android:id="@+id/AddCard"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/rounded_button"
             android:textColor="@color/colorText"
             android:text="ADD PAYMENT METHOD" />
 
         <Button
             android:id="@+id/btnDelete"
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/rounded_button"
             android:textColor="@color/colorText"
             android:text="Delete Account" />
