@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#87b4fe</color>
-    <color name="colorPrimaryDark">#87b4fe</color>
+    <color name="colorPrimary">#1e2128</color>
+    <color name="colorPrimaryDark">#1b1e25</color>
     <color name="colorAccent">#87b4fe</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#87b4fe</color>
-    <color name="colorCornFlowerBlue">#6495ED</color>
-    <color name="colorGalben">#e6e36a</color>
-    <color name="colorButon">#efeda6</color>
-    <color name="colorBgCred">#b7caec</color>
-    <color name="colorVerde">#32bc32</color>
+    <color name="colorButon">#005d9f</color>
     <color name="colorText">#000000</color>
-    <color name="bgColor">#07263b</color>
+    <color name="bgColor">#2c2c34</color>
 </resources>
