@@ -10,7 +10,7 @@
     <SurfaceView
         android:id="@+id/cameraSurfaceView"
         android:layout_width="fill_parent"
-        android:layout_height="819dp"
+        android:layout_height="fill_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

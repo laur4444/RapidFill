@@ -226,16 +226,25 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
         View payView;
         TextView amountTextView;
         Button confirmPaymentButton;
+        Button cancelPaymentButton;
 
         payDialogAux = new AlertDialog.Builder(ScannerActivity.this);
         payView = getLayoutInflater().inflate(R.layout.pay_layout, null);
         amountTextView = (TextView) payView.findViewById(R.id.amountTextView);
         confirmPaymentButton = (Button) payView.findViewById(R.id.btnConfirmPay);
+        cancelPaymentButton = (Button) payView.findViewById(R.id.btnCancelPay);
         amountTextView.setText(amount + "");
         confirmPaymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clientConfirmation();
+            }
+        });
+        cancelPaymentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                payDialog.dismiss();
+                displayServerResponse(false);
             }
         });
         payDialogAux.setView(payView);
