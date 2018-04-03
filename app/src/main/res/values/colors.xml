@@ -8,4 +8,5 @@
     <color name="colorButon">#4e9e30</color>
     <color name="colorText">#ffffff</color>
     <color name="bgColor">#2c2c34</color>
+    <color name="bgTransactions">#ffffff</color>
 </resources>

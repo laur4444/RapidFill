@@ -1,39 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgTransactions"
     android:orientation="vertical"
+    android:paddingBottom="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingBottom="10dp"
-    android:paddingTop="15dp"
-    android:background="@drawable/gradient">
+    android:paddingTop="15dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/dateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
-        android:text="zz/ll/aaaa 24:00"
-        android:textColor="#00a7f5"
-        android:textSize="25dp" />
+        <ImageView
+            android:id="@+id/pumpImage"
+            android:layout_width="94dp"
+            android:layout_height="107dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/gaspump" />
 
-    <TextView
-        android:id="@+id/priceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:text="32 lei"
-        android:textColor="#00a7f5"
-        android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/statusTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewPrice"
-        android:text="Completed"
-        android:textColor="#00a7f5"
-        android:textSize="20dp" />
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingBottom="15dp"
+                android:text="zz/ll/aaaa 24:00"
+                android:textColor="@color/bt_error_red"
+                android:textSize="25dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/priceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:gravity="bottom"
+                    android:text="32 lei"
+                    android:textColor="@color/bgColor"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/statusTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textViewPrice"
+                    android:gravity="right"
+                    android:text="Completed"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
