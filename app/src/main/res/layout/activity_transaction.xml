@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="net.ddns.rapidfill.rapidfill.TransactionActivity"
-    android:background="@color/bgColor">
+    android:background="@drawable/gradient">
 
     <ListView
         android:id="@+id/transactionsListView"
