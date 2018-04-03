@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/bgColor">
 
 
     <LinearLayout
@@ -15,65 +16,73 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <TextView
-            android:id="@+id/tvMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll2Holder"
+            android:layout_width="250dp"
+            android:layout_height="130dp"
             android:gravity="center"
-            android:text="Ready for transaction"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp">
-
-            <EditText
-                android:id="@+id/etPrice"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_button">
+            <TextView
+                android:id="@+id/tvMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="Choose the amount to pay"
-                android:imeOptions="actionDone"
-                android:inputType="text" />
+                android:text="Ready for transaction"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <EditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:hint="Choose the amount to pay"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnPay"
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/rounded_button"
             android:text="Pay Debug"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorText" />
 
         <Button
             android:id="@+id/scanButton"
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/rounded_button"
             android:text="Pay"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorText" />
 
         <Button
             android:id="@+id/viewTransactionsButton"
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/rounded_button"
             android:text="Transactions"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorText" />
 
         <Button
             android:id="@+id/AddCard"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/colorText"
             android:text="ADD PAYMENT METHOD" />
 
         <Button
@@ -81,8 +90,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/colorText"
             android:text="Delete Account" />
     </LinearLayout>
 

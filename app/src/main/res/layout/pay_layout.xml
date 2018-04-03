@@ -3,13 +3,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/infoTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/colorText"
         android:text="You will pay the following amount:" />
 
     <TextView
@@ -18,6 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="27 lei"
+        android:textColor="@color/colorText"
         android:textStyle="bold" />
 
     <Button
@@ -25,10 +28,10 @@
         android:layout_width="148dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/rounded_button"
         android:text="Pay"
         android:textAlignment="center"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/colorText" />
 
 
 </LinearLayout>

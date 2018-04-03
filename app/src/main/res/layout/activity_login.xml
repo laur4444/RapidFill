@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.ddns.rapidfill.rapidfill.LoginActivity">
+    tools:context="net.ddns.rapidfill.rapidfill.LoginActivity"
+    android:background="@color/bgColor">
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

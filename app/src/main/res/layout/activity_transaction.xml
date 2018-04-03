@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.ddns.rapidfill.rapidfill.TransactionActivity">
+    tools:context="net.ddns.rapidfill.rapidfill.TransactionActivity"
+    android:background="@color/bgColor">
 
     <ListView
         android:id="@+id/transactionsListView"
