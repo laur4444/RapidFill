@@ -54,6 +54,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     Button btnScanner;
     EditText etAmount;
     LinearLayout llHolder;
+    Button btnLogout;
 
     //UI
     ProgressDialog loadingDialog;
@@ -71,7 +72,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
        // btnPay = (Button) findViewById(R.id.btnPay);
         addCard = (Button) findViewById(R.id.AddCard);
         btnDelete = (Button) findViewById(R.id.btnDelete);
-
+        btnLogout = (Button) findViewById(R.id.btnLogout);
 
         btnTransactions = findViewById(R.id.viewTransactionsButton);
         btnScanner = findViewById(R.id.scanButton);
@@ -104,6 +105,13 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 change(ScannerActivity.class);
+            }
+        });
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                change(LoginActivity.class);
             }
         });
         //new HttpRequest().execute(this);

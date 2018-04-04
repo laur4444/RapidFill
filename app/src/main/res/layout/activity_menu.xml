@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -16,12 +17,28 @@
         android:orientation="vertical"
         android:visibility="visible">
 
+        <ImageView
+            android:id="@+id/logoImageView2"
+            android:layout_width="match_parent"
+            android:layout_height="227dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.51"
+            app:srcCompat="@drawable/logo" />
+
         <Button
             android:id="@+id/scanButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="175dp"
+            android:layout_marginTop="1dp"
             android:background="@drawable/rounded_button"
+            android:drawableLeft="@drawable/ic_button_pay"
             android:text="Pay"
             android:textColor="@color/colorText" />
 
@@ -30,6 +47,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_button_transactions"
             android:background="@drawable/rounded_button"
             android:text="Transactions"
             android:textColor="@color/colorText" />
@@ -39,9 +57,21 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_button_method"
             android:background="@drawable/rounded_button"
             android:textColor="@color/colorText"
             android:text="ADD PAYMENT METHOD" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/colorText"
+            android:drawableLeft="@drawable/ic_button_logout"
+            android:text="Logout"
+            />
 
         <Button
             android:id="@+id/btnDelete"
@@ -50,7 +80,10 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_button"
             android:textColor="@color/colorText"
-            android:text="Delete Account" />
+            android:text="Delete Account"
+            android:visibility="gone"/>
+
+
     </LinearLayout>
 
 </LinearLayout>

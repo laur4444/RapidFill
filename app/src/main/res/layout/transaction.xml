@@ -32,7 +32,8 @@
                     android:id="@+id/dateTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="center"
+                    android:layout_margin="15dp"
                     android:paddingBottom="15dp"
                     android:text="zz/ll/aaaa 24:00"
                     android:textColor="@color/bt_error_red"
@@ -42,12 +43,12 @@
                     android:id="@+id/priceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:gravity="bottom"
                     android:paddingBottom="10dp"
                     android:text="32 lei"
-                    android:layout_gravity="center"
                     android:textColor="@color/bgColor"
-                    android:textSize="30dp" />
+                    android:textSize="25dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -61,5 +62,5 @@
         android:text="Completed"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimary"
-        android:textSize="20dp" />
+        android:textSize="25dp" />
 </LinearLayout>
