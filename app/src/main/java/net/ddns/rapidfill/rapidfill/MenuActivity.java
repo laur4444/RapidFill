@@ -331,7 +331,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onResponse(String response) {
                         loadingDialog.dismiss();
-                        Toast.makeText(MenuActivity.this, "Token successful", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MenuActivity.this, "Token successful", Toast.LENGTH_LONG).show();
                         llHolder.setVisibility(View.VISIBLE);
                         token = response;
                     }

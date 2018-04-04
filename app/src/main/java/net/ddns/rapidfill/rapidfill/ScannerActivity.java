@@ -350,7 +350,7 @@ public class ScannerActivity extends AppCompatActivity implements View.OnClickLi
                 payDialog.dismiss();
                 loadingDialog.show();
                 serverConfirmation(stringNonce);
-                Toast.makeText(ScannerActivity.this, stringNonce, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ScannerActivity.this, stringNonce, Toast.LENGTH_SHORT).show();
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // the user canceled
             } else {
